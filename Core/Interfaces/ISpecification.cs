@@ -9,6 +9,10 @@ public interface ISpecification<T>
     Expression<Func<T, object>>? OrderBy { get; }
     Expression<Func<T, object>>? OrderByDescending { get; }
     bool IsDistinct { get; }
+    int Take { get; }
+    int Skip { get; }
+    bool IsPagingEnabled { get; }
+    IQueryable<T> ApplyCriteria(IQueryable<T> query);
     // Other properties and methods can be added here as needed, such as Includes, OrderBy, etc.
 }
 
