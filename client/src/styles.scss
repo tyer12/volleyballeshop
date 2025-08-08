@@ -9,5 +9,8 @@
   @include mat.badge-overrides((
     background-color: orange,
   ));
-  
 }
+
+.match-input-height {
+  height: var(--mat-form-field-conteiner-height) !important;
+} 

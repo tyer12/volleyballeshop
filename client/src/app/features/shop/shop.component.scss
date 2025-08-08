@@ -1,0 +1,7 @@
+.custom-stroked-button {
+  border-color: black !important; /* Custom border color */
+  color: black !important;        /* Custom text color */
+  &:hover {
+    background-color: #f8ab39 !important; /* Your desired hover background color */
+  }
+}

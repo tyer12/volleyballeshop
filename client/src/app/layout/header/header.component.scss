@@ -18,3 +18,22 @@
     background-color: #f8ab39 !important; /* Your desired hover background color */
   }
 }
+
+.cart-btn {
+  border: none;
+  background: transparent;
+  border-radius: 50%;
+  transition: box-shadow 0.2s;
+  padding: 4px;
+
+  &:hover {
+    box-shadow: 0 0 0 3px #f8ab39; // Circle effect, change color as needed
+    background: #fff; // Optional: keep background white
+  }
+
+  .mat-icon {
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+  }
+}
