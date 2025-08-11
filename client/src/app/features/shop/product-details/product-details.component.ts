@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ShopService } from '../../../core/services/shop.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
 import { Product } from '../../../shared/models/products';
 import { CurrencyPipe } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
@@ -18,7 +18,9 @@ import { MatDivider } from "@angular/material/divider";
     MatFormField,
     MatInput,
     MatLabel,
-    MatDivider
+    MatDivider,
+    RouterLink,
+    RouterLinkActive
 ],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss'

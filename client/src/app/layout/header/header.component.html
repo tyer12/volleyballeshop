@@ -1,4 +1,4 @@
-<header class="border-b p-3 w-full bg-white">
+<header class="border-b p-3 w-full bg-white max-h-20 fixed top-0 z-50 ">
     <div class="flex align-middle items-center justify-between max-w-screen-2xl mx-auto">
         <a routerLink="/" routerLinkActive="active"><img src="/images/logo.png" alt="app logo" class="max-h-16"></a>
         <nav class="flex gap-3 my-2 uppercase text-2xl">
@@ -7,7 +7,7 @@
                 [routerLinkActiveOptions]="{exact: true}"
             ><mat-icon fontIcon="home"></mat-icon>Home</a>
             <a routerLink="/shop" routerLinkActive="active">Shop</a>
-            <a>Contact</a>
+            <a routerLink="/test-error" routerLinkActive="active">Errors</a>
         </nav>
         <div class="flex gap-3 align-middle">
             <button mat-icon-button [matBadge]="6" matBadgeSize="large" class="cart-btn custom-badge mt-2 mr-2">
@@ -19,3 +19,6 @@
     </div>
 </header>
  
+@if (busyService.loading) {
+    <mat-progress-bar mode="indeterminate" class="fixed top-20 z-50"></mat-progress-bar>
+}
