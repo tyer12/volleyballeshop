@@ -1,0 +1,8 @@
+.custom-btn{
+    
+  &:hover {
+    background-color: #e0e0e0; // Solid grey fill on hover
+    box-shadow: none; // Remove the border effect, or keep if you want both
+    
+  }
+}

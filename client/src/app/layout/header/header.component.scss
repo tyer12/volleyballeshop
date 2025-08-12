@@ -27,8 +27,9 @@
   padding: 4px;
 
   &:hover {
-    box-shadow: 0 0 0 3px #f8ab39; // Circle effect, change color as needed
-    background: #fff; // Optional: keep background white
+    background-color: #e0e0e0; // Solid grey fill on hover
+    box-shadow: none; // Remove the border effect, or keep if you want both
+    
   }
 
   .mat-icon {
