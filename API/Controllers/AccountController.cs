@@ -51,7 +51,8 @@ public class AccountController(SignInManager<AppUser> signInManager) : BaseAPICo
     [HttpGet("user-info")]
     public async Task<ActionResult> GetUserInfo()
     {
-        if (User.Identity?.IsAuthenticated == false) return NoContent();
+        if (User.Identity?.IsAuthenticated == false)
+            return NoContent();
 
         var user = await signInManager.UserManager.GetuserByEmailWithAddress(User);
 
@@ -64,7 +65,7 @@ public class AccountController(SignInManager<AppUser> signInManager) : BaseAPICo
         });
     }
 
-    [HttpGet]
+    [HttpGet("auth-status")]
     public ActionResult GetAuthState()
     {
         return Ok(new { isAuthenticated = User.Identity?.IsAuthenticated ?? false });

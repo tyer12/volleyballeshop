@@ -12,10 +12,11 @@
 }
 
 .custom-stroked-button {
-  border-color: black !important; /* Custom border color */
-  color: black !important;        /* Custom text color */
+  color: #e08f17 !important;        /* Custom text color */
+  background-color: white !important; /* Your desired hover background color */
   &:hover {
-    background-color: #f8ab39 !important; /* Your desired hover background color */
+    background-color: #fbb347 !important; /* Your desired hover background color */
+    color: black !important;
   }
 }
 
