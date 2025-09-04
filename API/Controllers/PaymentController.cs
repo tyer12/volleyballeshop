@@ -13,8 +13,10 @@ using Stripe;
 namespace API.Controllers;
 
 public class PaymentController(IPaymentService paymentService,
-    IUnitOfWork unit, ILogger<PaymentController> logger,
-    IConfiguration config, IHubContext<NotificationHub> hubContext) : BaseAPIController
+    IUnitOfWork unit,
+    ILogger<PaymentController> logger,
+    IConfiguration config,
+    IHubContext<NotificationHub> hubContext) : BaseAPIController
 {
     private readonly string _whSecret = config["StripeSettings:WhSecret"]!;
 
@@ -39,10 +41,10 @@ public class PaymentController(IPaymentService paymentService,
     public async Task<IActionResult> StripeWebhook()
     {
         var json = await new StreamReader(Request.Body).ReadToEndAsync();
-
+        var stripeSignature = Request.Headers["Stripe-Signature"];
         try
         {
-            var stripeEvent = ConstructStripeEvent(json);
+            var stripeEvent = EventUtility.ConstructEvent(json, stripeSignature, _whSecret, throwOnApiVersionMismatch: false);
 
             if (stripeEvent.Data.Object is not PaymentIntent intent)
             {
@@ -71,7 +73,8 @@ public class PaymentController(IPaymentService paymentService,
         {
             var spec = new OrderSpecification(intent.Id, true);
 
-            var order = await unit.Repository<Core.Entities.OrderAggregate.Order>().GetEntityWithSpec(spec) ?? throw new Exception("Order not found");
+            var order = await unit.Repository<Core.Entities.OrderAggregate.Order>().GetEntityWithSpec(spec)
+                        ?? throw new Exception("Order not found");
 
             if ((long)order.GetTotal() * 100 != intent.Amount)
             {
